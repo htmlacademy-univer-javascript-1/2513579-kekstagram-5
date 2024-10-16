@@ -49,5 +49,5 @@ const createPhotos = () => {
   return photos;
 };
 
-const photosArray = createPhotos();
-console.log(photosArray);
+const arrayPhotos = createPhotos();
+console.log(arrayPhotos);
