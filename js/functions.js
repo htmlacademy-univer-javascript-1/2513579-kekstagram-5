@@ -19,3 +19,20 @@ function checkPalindrome(string){
 
 console.log(checkPalindrome('привет'));
 console.log(checkPalindrome('топот'));
+
+function meetingDuringWorkingHours(startWork, endWork, startMeeting, duration) {
+  const timeToMinutes = (time) => {
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  };
+
+  const workStart = timeToMinutes(startWork);
+  const workEnd = timeToMinutes(endWork);
+  const meetingStart = timeToMinutes(startMeeting);
+  const meetingEnd = meetingStart + duration;
+
+  return meetingStart >= workStart && meetingEnd <= workEnd;
+}
+
+console.log(meetingDuringWorkingHours('10:00', '12:00', '11:00', 120));
+console.log(meetingDuringWorkingHours('10:00', '12:00', '11:00', 60));
