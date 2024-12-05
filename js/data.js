@@ -47,26 +47,3 @@ export const createPhotos = () => {
   }
   return photos;
 };
-
-const pictures = [
-  {
-    url: 'https://example.com/photo1.jpg',
-    description: 'Описание фото 1',
-    likes: 5,
-    comments: 5,
-  },
-  {
-    url: 'https://example.com/photo2.jpg',
-    description: 'Описание фото 2',
-    likes: 35,
-    comments: 6,
-  },
-  {
-    url: 'https://example.com/photo3.jpg',
-    description: 'Описание фото 3',
-    likes: 150,
-    comments: 17,
-  },
-];
-
-export { pictures };
