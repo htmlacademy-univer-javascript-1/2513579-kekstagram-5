@@ -31,6 +31,7 @@ export const createPhotos = () => {
   for (let i = 1; i <= 25; i++) {
     const likes = createRandom(15, 200);
     const count = createRandom(0, 30);
+
     const comments = [];
 
     for (let k = 1; k <= count; k++) {
