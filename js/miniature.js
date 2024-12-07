@@ -1,15 +1,16 @@
 const miniatureTemplate = document
   .querySelector('#picture')
-  .textContent.querySelector('.picture');
+  .content.querySelector('.picture');
 const container = document.querySelector('.pictures');
 
 const createMiniature = ({ comments, description, likes, url }) => {
-  const miniature = miniatureTemplate.CloneNode(true);
+  const miniature = miniatureTemplate.cloneNode(true);
 
-  miniature.querySelector('.picture__img').scr = url;
+  miniature.querySelector('.picture__img').src = url;
   miniature.querySelector('.picture__img').alt = description;
   miniature.querySelector('.picture__comments').textContent = comments.length;
   miniature.querySelector('.picture__likes').textContent = likes;
+
   return miniature;
 };
 

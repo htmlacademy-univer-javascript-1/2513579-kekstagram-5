@@ -17,6 +17,7 @@ function checkPalindrome(string){
   return true;
 }
 
+
 console.log(checkPalindrome('привет'));
 console.log(checkPalindrome('топот'));
 
