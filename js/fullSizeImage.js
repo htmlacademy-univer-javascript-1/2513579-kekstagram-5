@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 const bigPictureElement = document.querySelector('.big-picture');
 const closeButton = bigPictureElement.querySelector('.big-picture__cancel');
 const body = document.body;
@@ -16,21 +17,21 @@ const openBigPicture = ({ url, likes, comments, description }) => {
   captionElement.textContent = description;
 
   commentsContainer.innerHTML = '';
-    comments.forEach(({ avatar, name, message }) => {
-        const commentElement = document.createElement('li');
-        commentElement.className = 'social__comment';
-        commentElement.innerHTML = `
+  comments.forEach(({ avatar, name, message }) => {
+    const commentElement = document.createElement('li');
+    commentElement.className = 'social__comment';
+    commentElement.innerHTML = `
             <img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
             <p class="social__text">${message}</p>
         `;
-        commentsContainer.appendChild(commentElement);
-    });
+    commentsContainer.appendChild(commentElement);
+  });
 
-    document.querySelector('.social__comment-count').classList.add('hidden');
-    document.querySelector('.comments-loader').classList.add('hidden');
+  document.querySelector('.social__comment-count').classList.add('hidden');
+  document.querySelector('.comments-loader').classList.add('hidden');
 
-    closeButton.addEventListener('click', closeBigPicture);
-    document.addEventListener('keydown', onEscKeyPress);
+  closeButton.addEventListener('click', closeBigPicture);
+  document.addEventListener('keydown', onEscKeyPress);
 };
 
 const closeBigPicture = () => {
@@ -41,7 +42,7 @@ const closeBigPicture = () => {
 
 const onEscKeyPress = (event) => {
   if (event.key === 'Escape') {
-      closeBigPicture();
+    closeBigPicture();
   }
 };
 
