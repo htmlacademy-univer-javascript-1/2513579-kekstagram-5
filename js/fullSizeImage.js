@@ -46,4 +46,5 @@ const onEscKeyPress = (event) => {
   }
 };
 
+
 export { openBigPicture };
