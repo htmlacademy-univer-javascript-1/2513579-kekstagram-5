@@ -12,8 +12,11 @@ const commentCountDisplay = bigPictureElement.querySelector('.social__comment-co
 
 let currentCommentsIndex = 0;
 const LOAD_STEP = 5;
+let allComments = [];
 
 const openBigPicture = ({ url, likes, comments, description }) => {
+  allComments = comments;
+
   bigPictureElement.classList.remove('hidden');
   body.classList.add('modal-open');
 
@@ -28,11 +31,15 @@ const openBigPicture = ({ url, likes, comments, description }) => {
   document.querySelector('.social__comment-count').classList.remove('hidden');
   document.querySelector('.comments-loader').classList.remove('hidden');
 
-  loadComments(comments);
+  loadComments(allComments);
 
   closeButton.addEventListener('click', closeBigPicture);
   document.addEventListener('keydown', onEscKeyPress);
 };
+
+commentsLoader.addEventListener('click', () => {
+  loadComments(allComments);
+});
 
 const loadComments = (comments) => {
   const commentsToLoad = comments.slice(currentCommentsIndex, currentCommentsIndex + LOAD_STEP);
@@ -53,6 +60,8 @@ const loadComments = (comments) => {
 
   if (currentCommentsIndex >= comments.length) {
     commentsLoader.classList.add('hidden');
+  } else {
+    commentsLoader.classList.remove('hidden');
   }
 };
 
