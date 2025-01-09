@@ -1,39 +1,18 @@
-/* eslint-disable no-console */
+const convertTimeToMinutes = (time) => {
+  const [hours, minutes] = time.split(':').map((element) => parseInt(element, 10));
+  return hours * 60 + minutes;
+};
 
+const checkWorkingSchedule = (dayStart, dayEnd, meetingStart, meetingDuration) => {
+  dayStart = convertTimeToMinutes(dayStart);
+  dayEnd = convertTimeToMinutes(dayEnd);
+  meetingStart = convertTimeToMinutes(meetingStart);
 
-function checkLengthString(string,maxLength){
-  return string.length <= maxLength;
-}
-
-console.log(checkLengthString('привет', 10));
-console.log(checkLengthString('привет', 5));
-
-function checkPalindrome(string){
-  for (let i = 0; i < string.length / 2; i++){
-    if (string[i] !== string[string.length - 1 - i]){
-      return false;
-    }
+  if (meetingStart >= dayStart) {
+    return (meetingStart + meetingDuration) <= dayEnd;
   }
-  return true;
-}
 
+  return false;
+};
 
-console.log(checkPalindrome('привет'));
-console.log(checkPalindrome('топот'));
-
-function meetingDuringWorkingHours(startWork, endWork, startMeeting, duration) {
-  const timeToMinutes = (time) => {
-    const [hours, minutes] = time.split(':').map(Number);
-    return hours * 60 + minutes;
-  };
-
-  const workStart = timeToMinutes(startWork);
-  const workEnd = timeToMinutes(endWork);
-  const meetingStart = timeToMinutes(startMeeting);
-  const meetingEnd = meetingStart + duration;
-
-  return meetingStart >= workStart && meetingEnd <= workEnd;
-}
-
-console.log(meetingDuringWorkingHours('10:00', '12:00', '11:00', 120));
-console.log(meetingDuringWorkingHours('10:00', '12:00', '11:00', 60));
+checkWorkingSchedule('08:00', '17:30', '14:00', 90);
