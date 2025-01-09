@@ -1,14 +1,15 @@
-import { createPhotos } from './data.js';
-import { renderMiniatures } from './miniature.js';
-import { openBigPicture } from './fullSizeImage.js';
-const photos = createPhotos();
-renderMiniatures(createPhotos());
+import './form.js';
+import { getData } from './api.js';
+import { closeMessage, showServerErrorMessage } from './info-messages.js';
+import { filterPictures, hideFilters, showFilters } from './filters.js';
 
-document.querySelector('.pictures').addEventListener('click', (event) => {
-  const miniature = event.target.closest('.picture');
-  if (miniature) {
-    const pictureId = Number(miniature.dataset.id);
-    const pictureData = photos.find((picture) => picture.id === pictureId);
-    openBigPicture(pictureData);
-  }
-});
+getData()
+  .then((data) => {
+    closeMessage();
+    filterPictures(data);
+    showFilters();
+  })
+  .catch(() => {
+    hideFilters();
+    showServerErrorMessage();
+  });
