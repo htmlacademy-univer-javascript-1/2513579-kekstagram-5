@@ -30,7 +30,7 @@ const onEditorEscKeydown = (evt) => {
   }
 };
 
-const onEditorCloseClick =  () => {
+const onEditorCloseClick = () => {
   closeEditor();
 };
 
