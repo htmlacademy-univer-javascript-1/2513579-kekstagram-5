@@ -1,3 +1,4 @@
+
 const getData = () => fetch('https://29.javascript.htmlacademy.pro/kekstagram/data')
   .then((response) => response.json())
   .then((data) => Promise.resolve(data))
